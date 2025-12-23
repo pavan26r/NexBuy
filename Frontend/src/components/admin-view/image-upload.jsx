@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import axios from "axios";
 import { Skeleton } from "../ui/skeleton";
+import { API_BASE_URL } from "@/config/api";
 
 function ProductImageUpload({
   imageFile,
@@ -40,10 +41,10 @@ function ProductImageUpload({
   async function uploadImageToCloudinary() {
     setImageLoadingState(true);
     const data = new FormData();
-   data.append("my_file",imageFile);
+    data.append("my_file", imageFile);
 
     const response = await axios.post(
-      "http://localhost:5000/api/admin/products/upload-image",
+      `${API_BASE_URL}/api/admin/products/upload-image`,
       data
     );
 
